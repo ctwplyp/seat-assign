@@ -3,7 +3,10 @@ const tables = (state = [], action) => {
     case 'ADD_TABLE':
       return [
         ...state,
-        {id: action.id}
+        {
+          id: action.id,
+          name: action.name
+        }
       ]
     default:
       return state

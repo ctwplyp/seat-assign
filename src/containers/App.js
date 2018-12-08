@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import '../App.css';
+import React, { Component } from 'react'
+import '../App.css'
+import Display from './Display'
+
 
 class App extends Component {
   render() {
@@ -8,6 +10,7 @@ class App extends Component {
         <header className="App-header">
           <p>Seat/Table Assignments</p>
         </header>
+        <Display />
       </div>
     );
   }
