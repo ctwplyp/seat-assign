@@ -12,3 +12,21 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.tableSummary {
+  position: fixed;
+}
+.tableView {
+  background-color: grey;
+  border-radius: 5%;
+  box-shadow: 0 0 6px 1px;
+  height: 300px;
+  width: 300px;
+  margin: 1em;
+}
+.tableContainer {
+  margin: 3em;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
