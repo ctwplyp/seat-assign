@@ -30,3 +30,13 @@
   align-content: center;
   flex-wrap: wrap;
 }
+
+.button__add-guest {
+  border-radius: 50%;
+  background-color: green;
+  color: #fff;
+  /* padding: 1em; */
+  height: 50px;
+  width: 50px;
+  font-size: 2em;
+}

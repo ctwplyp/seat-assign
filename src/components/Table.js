@@ -1,13 +1,19 @@
 import React from 'react'
+import AddGuestForm from './AddGuestForm'
+
 
 const Table = props => {
   let guests = props.guests.length > 0 ?
-    props.guests.map(guest => <h4>{guest.name}</h4>) :
+    props.guests.map(guest => <li>{guest.name}</li>) :
     "Empty table"
   return (
     <div className="tableView">
       <h2>{props.name}</h2>
-      <div>{guests}</div>
+      <ul>{guests}</ul>
+      {props.isGuestFormVisible ?
+        <AddGuestForm tableID={props.id} /> :
+        <button className="button__add-guest" onClick={props.showGuestForm}>+</button>
+      }
     </div>
   )
 }
