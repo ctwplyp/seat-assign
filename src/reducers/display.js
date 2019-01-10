@@ -1,6 +1,6 @@
 import { Displays } from '../actions'
 
-const display = (state = Displays.SHOW_TABLE_FORM, action) => {
+const display = (state = Displays.SHOW_TABLES, action) => {
   switch (action.type) {
     case 'SET_DISPLAY':
       return action.display

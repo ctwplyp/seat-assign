@@ -23,6 +23,7 @@ const Tables = props => {
                   name={table.name}
                   id={table.id}
                   guests={table.guests}
+                  seats={table.seats}
                   showGuestForm={() => props.onShowGuestForm(table.id)}
                   isGuestFormVisible={table.guestFormDisplay} />
   }) : "No tables yet."

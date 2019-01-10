@@ -4,10 +4,11 @@ export const setDisplay = display => ({
 })
 
 let tableID = 0
-export const addTable = name => ({
+export const addTable = (name, seats=1) => ({
   type: 'ADD_TABLE',
   id: tableID++,
-  name
+  name,
+  seats
 })
 
 let guestID = 0

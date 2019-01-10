@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import tables from './tables'
 import display from './display'
-import guests from './guests'
+import allGuests from './allGuests'
 
 export default combineReducers({
   tables,
   display,
-  guests
+  allGuests
 })

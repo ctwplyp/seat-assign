@@ -1,18 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { submitGuest } from '../actions'
+import { hideGuestForm, addGuest } from '../actions'
 
-const GuestForm = ({ dispatch }) => {
-  let input
+let input
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onSubmit: e => {
+    e.preventDefault()
+    dispatch(addGuest(input.value, ownProps.tableID))
+    // dispatch(hideGuestForm(ownProps.tableID))
+    input.value = ''
+  }
+})
+
+const GuestForm = props => {
   return (
-    <form onSubmit={e => {
-      e.preventDefault()
-      // dispatch(addGuest(input.value))
-      // dispatch(setDisplay(Displays.SHOW_TABLES))
-      input.value = ''
-    }}>
-      <label htmlFor="tableName">Guest Name (optional):</label>
-      <input id="tableName"
+    <form onSubmit={props.onSubmit}>
+      <label htmlFor="guestName">Guest Name:</label>
+      <input id="guestName"
              ref={node => input = node}
              placeholder="Guest Name" />
       <div>
@@ -24,4 +28,7 @@ const GuestForm = ({ dispatch }) => {
   )
 }
 
-export default connect()(GuestForm)
+export default connect(
+  null,
+  mapDispatchToProps
+)(GuestForm)
