@@ -3,23 +3,36 @@ import { connect } from 'react-redux'
 import { addTable, setDisplay, Displays } from '../actions'
 
 const TableForm = ({ dispatch }) => {
-  let input
+  let tableName, seats
   return (
-    <form onSubmit={e => {
+    <form id="tableForm" onSubmit={e => {
       e.preventDefault()
-      dispatch(addTable(input.value))
+      dispatch(addTable(tableName.value, +seats.value))
       dispatch(setDisplay(Displays.SHOW_TABLES))
-      input.value = ''
+      tableName.value = ''
+      seats.value = null
     }}>
-      <label htmlFor="tableName">Table Name (optional):</label>
-      <input id="tableName"
-             ref={node => input = node}
-             placeholder="Table Name" />
-      <div>
-        <button type="submit">
-          Create A Table
-        </button>
+      <div className="newTableInputs">
+        <h2>New Table:</h2>
+        <div className="inputRow">
+          <label htmlFor="tableName">Table Name (optional):</label>
+          <input id="tableName"
+                 ref={node => tableName = node}
+                 placeholder="Table Name" />
+        </div>
+        <div className="inputRow">
+          <label htmlFor="seats">Available Seats:</label>
+          <input type="number"
+                 ref={node => seats = node}
+                 id="seats"
+                 min="1"
+                 required
+                 step="1" />
+        </div>
       </div>
+      <button type="submit">
+        Create A Table
+      </button>
     </form>
   )
 }

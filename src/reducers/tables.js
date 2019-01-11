@@ -6,9 +6,35 @@ const tables = (state = [], action) => {
         {
           id: action.id,
           name: action.name,
-          guests: []
+          seats: action.seats,
+          guests: [],
+          guestFormDisplay: false
         }
       ]
+    case 'SHOW_GUEST_FORM':
+      return state.map(table =>
+        (table.id === action.id) ?
+          {...table, guestFormDisplay: true} :
+          table
+      )
+    case 'HIDE_GUEST_FORM':
+      return state.map(table =>
+        (table.id === action.id) ?
+          {...table, guestFormDisplay: false} :
+          table
+      )
+    case 'ADD_GUEST':
+      return state.map(table =>
+        (table.id === action.tableID) ?
+          {...table,
+            guests: [...table.guests, {
+              id: action.id,
+              name: action.name
+            }],
+            guestFormDisplay: false
+          } :
+          table
+      )
     default:
       return state
   }
