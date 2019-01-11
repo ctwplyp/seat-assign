@@ -18,7 +18,7 @@ const Table = props => {
         <h3>Total Seats: {props.seats}</h3>
         {props.isGuestFormVisible ?
           <AddGuestForm tableID={props.id} /> :
-          <button className="button__add-guest" onClick={props.showGuestForm}>Add Guest</button>
+          <button className="button__add-guest" onClick={props.showGuestForm}>Add Guest </button>
         }
       </footer>
     </div>
