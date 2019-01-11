@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 const Table = props => {
   let guests = props.guestIDs.length > 0 ?
     <ol>{props.guestIDs.map(id => <li>{props.guests[id].name}</li>)}</ol> :
-    <h4>Empty table</h4>
+    <h4>Empty Table</h4>
   return (
     <div className="tableView">
       <h2>{props.name}</h2>
