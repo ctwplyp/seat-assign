@@ -7,7 +7,7 @@ const tables = (state = [], action) => {
           id: action.id,
           name: action.name,
           seats: action.seats,
-          guests: [],
+          guestIDs: [],
           guestFormDisplay: false
         }
       ]
@@ -27,10 +27,7 @@ const tables = (state = [], action) => {
       return state.map(table =>
         (table.id === action.tableID) ?
           {...table,
-            guests: [...table.guests, {
-              id: action.id,
-              name: action.name
-            }],
+            guestIDs: [...table.guestIDs, action.id],
             guestFormDisplay: false
           } :
           table

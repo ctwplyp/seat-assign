@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { hideGuestForm, addGuest } from '../actions'
+import { addGuest } from '../actions'
 
 let input
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onSubmit: e => {
     e.preventDefault()
     dispatch(addGuest(input.value, ownProps.tableID))
-    // dispatch(hideGuestForm(ownProps.tableID))
     input.value = ''
   }
 })

@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import { addTable, setDisplay, Displays } from '../actions'
 
 const TableForm = ({ dispatch }) => {
+  const boundAddTable = (tableName, seats) => dispatch(addTable(tableName.value, +seats.value))
+  const boundSetDisplay = display => dispatch(setDisplay(display))
   let tableName, seats
   return (
     <form id="tableForm" onSubmit={e => {
       e.preventDefault()
-      dispatch(addTable(tableName.value, +seats.value))
-      dispatch(setDisplay(Displays.SHOW_TABLES))
+      boundAddTable(tableName, seats)
+      boundSetDisplay(Displays.SHOW_TABLES)
       tableName.value = ''
       seats.value = null
     }}>

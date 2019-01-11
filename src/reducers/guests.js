@@ -1,4 +1,4 @@
-const allGuests = (state = [], action) => {
+const guests = (state = [], action) => {
   switch (action.type) {
     case 'ADD_GUEST':
       return [
@@ -14,4 +14,4 @@ const allGuests = (state = [], action) => {
   }
 }
 
-export default allGuests
+export default guests
