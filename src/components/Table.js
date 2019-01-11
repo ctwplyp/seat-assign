@@ -1,10 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import AddGuestForm from './AddGuestForm'
 
+const mapStateToProps = state => ({
+  guests: state.guests
+})
 
 const Table = props => {
-  let guests = props.guests.length > 0 ?
-    <ol>{props.guests.map(guest => <li>{guest.name}</li>)}</ol> :
+  let guests = props.guestIDs.length > 0 ?
+    <ol>{props.guestIDs.map(id => <li>{props.guests[id].name}</li>)}</ol> :
     <h4>Empty table</h4>
   return (
     <div className="tableView">
@@ -22,4 +26,4 @@ const Table = props => {
 }
 
 
-export default Table
+export default connect (mapStateToProps)(Table)
