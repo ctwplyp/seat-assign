@@ -18,7 +18,9 @@ const Table = props => {
         <h3>Total Seats: {props.seats}</h3>
         {props.isGuestFormVisible ?
           <AddGuestForm tableID={props.id} /> :
-          <button className="button__add-guest" onClick={props.showGuestForm}>Add Guest</button>
+          props.guestIDs.length === props.seats ?
+            <h3>Table Full!</h3> :
+            <button className="button__add-guest" onClick={props.showGuestForm}>Add Guest</button>
         }
       </footer>
     </div>
