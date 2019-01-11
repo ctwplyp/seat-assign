@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 const Table = props => {
   let guests = props.guestIDs.length > 0 ?
     <ol>{props.guestIDs.map(id => <li>{props.guests[id].name}</li>)}</ol> :
-    <h4>Empty table</h4>
+    <h4>Empty Table</h4>
   return (
     <div className="tableView">
       <h2>{props.name}</h2>
@@ -18,7 +18,9 @@ const Table = props => {
         <h3>Total Seats: {props.seats}</h3>
         {props.isGuestFormVisible ?
           <AddGuestForm tableID={props.id} /> :
-          <button className="button__add-guest" onClick={props.showGuestForm}>Add Guest</button>
+          props.guestIDs.length === props.seats ?
+            <h3>Table Full!</h3> :
+            <button className="button__add-guest" onClick={props.showGuestForm}>Add Guest</button>
         }
       </footer>
     </div>
