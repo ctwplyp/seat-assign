@@ -27,7 +27,7 @@ const Tables = props => {
   return (
     <main>
       <TableSummary />
-      <button onClick={props.onClick}>Add a Table</button>
+      <button onClick={props.onClick}>Add a table</button>
       <div className="tableContainer">
         {tables}
       </div>
