@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import GuestForm from './AddGuestForm'
+import TableOccupancy from './TableOccupancy'
 import { showGuestForm } from '../actions'
 
 const mapDispatchToProps = dispatch => ({
@@ -9,7 +10,7 @@ const mapDispatchToProps = dispatch => ({
 
 const TableFooter = props => (
   <footer className={props.guestFormDisplay ? "tableFooter tableFooter__Form" : "tableFooter tableFooter__Btn"}>
-    <h3>Total Seats: {props.seats}</h3>
+    <TableOccupancy seats={props.seats} occupied={props.guestIDs.length} />
     {props.guestFormDisplay ?
       <GuestForm tableID={props.id} /> :
       props.guestIDs.length === props.seats ?
