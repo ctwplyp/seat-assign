@@ -25,6 +25,7 @@ const TableForm = ({ dispatch }) => {
         <div className="inputRow">
           <label htmlFor="seats">Available Seats:</label>
           <input type="number"
+                 defaultValue="8"
                  ref={node => seats = node}
                  id="seats"
                  min="1"
