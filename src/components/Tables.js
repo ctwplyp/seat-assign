@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Table from './Table'
-import TableSummary from './TableSummary'
 import { setDisplay, Displays, showGuestForm } from '../actions'
 
 
@@ -25,13 +24,12 @@ const Tables = props => {
                   isGuestFormVisible={table.guestFormDisplay} />
   }) : "No tables yet."
   return (
-    <main>
-      <TableSummary />
+    <div className="tables">
       <button onClick={props.onClick}>Add a Table</button>
       <div className="tableContainer">
         {tables}
       </div>
-    </main>
+    </div>
   )
 }
 
