@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Table from './Table'
-import TableSummary from './TableSummary'
-import { setDisplay, Displays, showGuestForm } from '../actions'
+import { setDisplay, Displays } from '../actions'
 
 
 const mapStateToProps = state => ({
@@ -10,28 +9,21 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onClick: () => dispatch(setDisplay(Displays.SHOW_TABLE_FORM)),
-  onShowGuestForm: id => dispatch(showGuestForm(id))
+  onClick: () => dispatch(setDisplay(Displays.SHOW_TABLE_FORM))
 })
 
 const Tables = props => {
   let tables = props.tables.length ? props.tables.map(table => {
     return <Table key={table.id}
-                  name={table.name}
-                  id={table.id}
-                  guestIDs={table.guestIDs}
-                  seats={table.seats}
-                  showGuestForm={() => props.onShowGuestForm(table.id)}
-                  isGuestFormVisible={table.guestFormDisplay} />
+                  {...table} />
   }) : "No tables yet."
   return (
-    <main>
-      <TableSummary />
-      <button onClick={props.onClick}>Add a table</button>
-      <div className="tableContainer">
+    <div className="tables">
+      <button onClick={props.onClick}>Add a Table</button>
+     <div className="tableContainer">
         {tables}
       </div>
-    </main>
+    </div>
   )
 }
 
