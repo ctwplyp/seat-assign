@@ -9,9 +9,16 @@ const guests = (state = [], action) => {
           tableID: action.tableID
         }
       ]
+    case 'REASSIGN_GUEST':
+      return state.map(guest =>
+      (guest.id === action.id ) ?
+        { ...guest,
+            tableID: action.tableID
+        } : guest 
+      )
     default:
-      return state
-  }
+      return state 
+    }
 }
 
 export default guests

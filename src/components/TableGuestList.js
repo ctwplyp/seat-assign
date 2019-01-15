@@ -9,7 +9,7 @@ const TableGuestList = props => (
   props.guestIDs.length > 0 ?
     <ol>
       {props.guestIDs.map(
-        guestID => <li key={props.guests[guestID].guestID}>
+        guestID => <li draggable key={props.guests[guestID].id}>
           {props.guests[guestID].name}
         </li>
       )}

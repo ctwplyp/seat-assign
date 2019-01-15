@@ -7,7 +7,7 @@ const GuestList = ({ guests }) => (
     <ol>
       {guests.map(guest =>
         <Guest
-          key={guest.id}
+          key={guest.id} 
           {...guest}
           // onClick={() => assignGuest(guest.id)}
         />

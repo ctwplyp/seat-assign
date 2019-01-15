@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Guest = ({name}) => (
-  <li>{name}</li>
+const Guest = ({name, id}) => (
+  <li onDragStart ={(e) => onDragStart(e, id)}
+  draggable >{name}</li>
 )
+
+const onDragStart = (ev, id) => {
+  ev.dataTransfer.setData("id", id);
+}
 
 Guest.propTypes = {
   // onClick: PropTypes.func.isRequired,
