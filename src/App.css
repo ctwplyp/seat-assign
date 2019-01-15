@@ -12,8 +12,27 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.tableSummary {
-  position: fixed;
+main {
+  min-height: 90vh;
+  display: grid;
+  grid-template-areas: "main main main" "aside";
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr;
+}
+aside {
+  background-color: #3E423A;
+  color: #fff;
+}
+.add_unassigned {
+  background-color: #00AAFF;
+  position: absolute;
+  bottom: 0;
+  padding: 0.5em;
+  color: #000;
+}
+
+.tables {
+  margin: 3em;
 }
 .tableView {
   background-color: grey;
@@ -63,6 +82,9 @@ footer.tableFooter__Btn {
   width: 4em;
 }
 
+.guestForm * {
+  margin: 0.5em;
+}
 .button__add-guest {
   border-radius: 2em;
   background-color: green;
