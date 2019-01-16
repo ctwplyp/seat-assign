@@ -22,10 +22,14 @@ main {
 aside {
   background-color: #3E423A;
   color: #fff;
+  position: sticky;
+  max-height: 100vh;
+  overflow-y: scroll;
+  top: 0;
 }
 .add_unassigned {
   background-color: #00AAFF;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   padding: 0.5em;
   color: #000;
