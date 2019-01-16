@@ -6,23 +6,30 @@ import { reassignGuest } from '../actions'
 
 const mapDispatchToProps = {reassignGuest}
 
-
 const Table = props => {
-  const changeGuest = (guestID, tableID) => props.reassignGuest(guestID, tableID)
-  const handleDrop =(ev) => {
-    let guestId = parseInt(ev.dataTransfer.getData("id"));
-    console.log(guestId);
-    let tableId = props.id;
-    console.log(guestId, tableId);
-    changeGuest(guestId, tableId);
+  const handleDrop = (ev) => {
+    let guestID = parseInt(ev.dataTransfer.getData("id"));
+    let tableID = props.id;
+    props.reassignGuest(guestID, tableID)
+    ev.target.classList.remove("drag")
   }
-  const onDragOver =(ev) => {
+  const onDragOver = (ev) => {
     ev.preventDefault();
   }
-    return (
-    <div className="tableView" 
-    onDragOver ={(e) => onDragOver(e)}
-    onDrop ={(e) => handleDrop(e)}>
+  const onDragEnter = (ev) => {
+    if ( ev.target.className === "tableView" ) {
+      ev.target.classList.add("drag")
+    }
+  }
+  const onDragLeave = (ev) => {
+    ev.target.classList.remove("drag")
+  }
+  return (
+    <div className="tableView"
+         onDragOver={(e) => onDragOver(e)}
+         onDragEnter={(e) => onDragEnter(e)}
+         onDragLeave={(e) => onDragLeave(e)}
+         onDrop={(e) => handleDrop(e)}>
       <h2>{props.name}</h2>
       <TableGuestList guestIDs={props.guestIDs} />
       <TableFooter {...props} />

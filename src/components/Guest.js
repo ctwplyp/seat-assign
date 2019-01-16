@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Guest = ({name, id}) => (
-  <li onDragStart ={(e) => onDragStart(e, id)}
-  draggable >{name}</li>
+const Guest = ({row, name, id, tableID}) => (
+  <tr onDragStart ={(e) => e.dataTransfer.setData("id", id)}
+      draggable >
+    <td>{row}</td>
+    <td>{name}</td>
+    <td>{tableID}</td>
+  </tr>
 )
 
 const onDragStart = (ev, id) => {
@@ -11,7 +15,6 @@ const onDragStart = (ev, id) => {
 }
 
 Guest.propTypes = {
-  // onClick: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired
 }
 

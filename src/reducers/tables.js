@@ -32,6 +32,14 @@ const tables = (state = [], action) => {
           } :
           table
       )
+    case 'REASSIGN_GUEST':
+      return state.map(table =>
+        (table.id === action.tableID) ?
+          {...table,
+            guestIDs: [...table.guestIDs, action.id]
+          } :
+          table
+      )
     default:
       return state
   }

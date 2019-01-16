@@ -4,15 +4,24 @@ import Guest from './Guest'
 
 const GuestList = ({ guests }) => (
   guests.length > 0 ?
-    <ol>
-      {guests.map(guest =>
+    <table className="guestTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Table #</th>
+        </tr>
+      </thead>
+      <tbody>
+      {guests.map((guest, i) =>
         <Guest
-          key={guest.id} 
+          key={guest.id}
           {...guest}
-          // onClick={() => assignGuest(guest.id)}
+          row={i+1}
         />
       )}
-    </ol> :
+      </tbody>
+    </table> :
     <h3>Empty</h3>
 )
 
@@ -21,7 +30,6 @@ GuestList.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired
   }).isRequired).isRequired
-  // toggleTodo: PropTypes.func.isRequired
 }
 
 export default GuestList
