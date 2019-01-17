@@ -13,11 +13,11 @@ const guests = (state = [], action) => {
       return state.map(guest =>
       (guest.id === action.id ) ?
         { ...guest,
-            tableID: action.tableID
-        } : guest 
+            tableID: action.newTableID
+        } : guest
       )
     default:
-      return state 
+      return state
     }
 }
 

@@ -8,10 +8,11 @@ const mapDispatchToProps = {reassignGuest}
 
 const Table = props => {
   const handleDrop = (ev) => {
-    if (props.seats > props.guestIDs.length) {      
-      let guestID = parseInt(ev.dataTransfer.getData("id"));
-      let tableID = props.id;
-      props.reassignGuest(guestID, tableID)
+    if (props.seats > props.guestIDs.length) {
+      const guestID = parseInt(ev.dataTransfer.getData("id"));
+      const oldTableID = parseInt(ev.dataTransfer.getData("oldTableID"));
+      const newTableID = props.id;
+      props.reassignGuest(guestID, oldTableID, newTableID)
     }
     ev.target.classList.remove("drag")
   }

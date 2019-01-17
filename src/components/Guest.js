@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Guest = ({row, name, id, tableID}) => (
-  <tr onDragStart ={(e) => e.dataTransfer.setData("id", id)}
+  <tr onDragStart ={(e) => handleDragStart(e, tableID, id)}
       draggable >
     <td>{row}</td>
     <td>{name}</td>
@@ -10,8 +10,9 @@ const Guest = ({row, name, id, tableID}) => (
   </tr>
 )
 
-const onDragStart = (ev, id) => {
-  ev.dataTransfer.setData("id", id);
+const handleDragStart = (ev, oldTableID, id) => {
+  ev.dataTransfer.setData("id", id)
+  ev.dataTransfer.setData("oldTableID", oldTableID)
 }
 
 Guest.propTypes = {

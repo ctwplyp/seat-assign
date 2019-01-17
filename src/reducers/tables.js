@@ -34,12 +34,16 @@ const tables = (state = [], action) => {
       )
     case 'REASSIGN_GUEST':
       return state.map(table =>
-        ( table.id === action.tableID &&
+        ( table.id === action.newTableID &&
           !table.guestIDs.includes(action.id) ) ?
           {...table,
             guestIDs: [...table.guestIDs, action.id]
           } :
-          table
+          ( table.id === action.oldTableID ) ?
+            {...table,
+              guestIDs: table.guestIDs.filter(guestID => guestID !== action.id)
+            } :
+            table
       )
     default:
       return state

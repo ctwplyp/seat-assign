@@ -11,10 +11,11 @@ export const addTable = (name, seats=1) => ({
   seats
 })
 
-export const reassignGuest = (id, tableID) => ({
+export const reassignGuest = (id, oldTableID, newTableID) => ({
   type: 'REASSIGN_GUEST',
   id,
-  tableID
+  oldTableID,
+  newTableID
 })
 
 let guestID = 0
