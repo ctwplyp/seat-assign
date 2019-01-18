@@ -12,7 +12,9 @@ const Table = props => {
       const guestID = parseInt(ev.dataTransfer.getData("id"));
       const oldTableID = parseInt(ev.dataTransfer.getData("oldTableID"));
       const newTableID = props.id;
-      props.reassignGuest(guestID, oldTableID, newTableID)
+      if (oldTableID !== newTableID) {
+        props.reassignGuest(guestID, oldTableID, newTableID)
+      }
     }
     ev.target.classList.remove("drag")
   }
