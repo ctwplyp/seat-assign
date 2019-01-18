@@ -19,11 +19,6 @@ const mapStateToProps = state => ({
   guests: getVisibleGuests(state.guests, state.visibilityFilter)
 })
 
-// const mapDispatchToProps = dispatch => ({
-//   toggleTodo: id => dispatch(toggleTodo(id))
-// })
-
 export default connect(
   mapStateToProps
-  // mapDispatchToProps
 )(GuestList)

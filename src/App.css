@@ -22,10 +22,14 @@ main {
 aside {
   background-color: #3E423A;
   color: #fff;
+  position: sticky;
+  max-height: 100vh;
+  overflow-y: scroll;
+  top: 0;
 }
 .add_unassigned {
   background-color: #00AAFF;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   padding: 0.5em;
   color: #000;
@@ -42,6 +46,14 @@ aside {
   width: 300px;
   margin: 1em;
   position: relative;
+  transform: scale(1);
+  transition: all 1s ease-in-out;
+}
+.drag {
+  border: 0.5em dashed;
+  transform: scale(1.2);
+  background-color: darkgrey;
+  transition: all 1s ease-in-out;
 }
 .tableContainer {
   margin: 3em;
@@ -91,4 +103,9 @@ footer.tableFooter__Btn {
   color: #fff;
   padding: 1em;
   font-size: 1.2em;
+}
+
+.guestTable {
+  border-spacing: 1em;
+  margin: 0 auto;
 }
