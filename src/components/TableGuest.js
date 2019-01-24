@@ -1,12 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const TableGuest = ({row, name, id, tableID}) => (
+const TableGuest = props => (
   <div className="tableGuest_row"
-    onDragStart ={(e) => handleDragStart(e, tableID, id)}
+    onDragStart ={(e) => handleDragStart(e, props.tableID, props.id)}
     draggable >
-    <span>{row}</span>
-    <span>{name}</span>
+    <span>{props.row}</span>
+    <span>{props.name}</span>
+    <button className="tableGuest_btn--remove"
+            onClick={() => props.onGuestRemove(props.id, props.tableID)}>
+      Remove
+    </button>
   </div>
 )
 
@@ -16,7 +20,8 @@ const handleDragStart = (ev, oldTableID, id) => {
 }
 
 TableGuest.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  onGuestRemove: PropTypes.func.isRequired
 }
 
 export default TableGuest

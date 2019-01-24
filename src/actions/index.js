@@ -18,6 +18,12 @@ export const reassignGuest = (id, oldTableID, newTableID) => ({
   newTableID
 })
 
+export const removeTableGuest = (id, tableID) => ({
+  type: 'REMOVE_GUEST',
+  id,
+  tableID
+})
+
 let guestID = 0
 export const addGuest = (name, tableID) => ({
   type: 'ADD_GUEST',

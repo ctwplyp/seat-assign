@@ -16,6 +16,13 @@ const guests = (state = [], action) => {
             tableID: action.newTableID
         } : guest
       )
+    case 'REMOVE_GUEST':
+      return state.map(guest =>
+      (guest.id === action.id ) ?
+        { ...guest,
+            tableID: null
+        } : guest
+      )
     default:
       return state
     }

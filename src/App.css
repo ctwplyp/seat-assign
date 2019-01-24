@@ -83,6 +83,9 @@ footer.tableFooter {
 .tableGuest_row span {
   margin: 0 1em;
 }
+.tableGuest_btn--remove{
+  color: red;
+}
 
 .circle__svg {
   transform: rotate(-90deg);
