@@ -11,6 +11,10 @@ const mapStateToProps = state => ({
 
 const Sidebar = props => (
   <aside>
+    <div className="add_unassigned">
+      <h2>Add Unassigned Guest:</h2>
+      <GuestForm tableID={null}/>
+    </div>
     <div className="tableTotal">
       <h3>Total # of tables: {props.tables.length}</h3>
     </div>
@@ -19,10 +23,6 @@ const Sidebar = props => (
     </div>
     <FilterNav />
     <GuestListContainer />
-    <div className="add_unassigned">
-      <h2>Add Unassigned Guest:</h2>
-      <GuestForm tableID={null}/>
-    </div>
   </aside>
 )
 

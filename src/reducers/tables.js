@@ -45,6 +45,14 @@ const tables = (state = [], action) => {
             } :
             table
       )
+    case 'REMOVE_GUEST':
+      return state.map(table =>
+        ( table.id === action.tableID ) ?
+          {...table,
+            guestIDs: table.guestIDs.filter(guestID => guestID !== action.id)
+          } :
+          table
+      )
     default:
       return state
   }
