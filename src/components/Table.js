@@ -5,28 +5,28 @@ import { connect } from 'react-redux'
 import { reassignGuest } from '../actions'
 
 const mapDispatchToProps = {reassignGuest}
+const mapStateToProps = state => ({
+  dragDropData: state.dragDropData
+})
 
 const Table = props => {
   const handleDrop = (ev) => {
-    if (props.seats > props.guestIDs.length) {
-      const guestID = parseInt(ev.dataTransfer.getData("id"));
-      const oldTableID = parseInt(ev.dataTransfer.getData("oldTableID"));
-      const newTableID = props.id;
-      if (oldTableID !== newTableID) {
-        props.reassignGuest(guestID, oldTableID, newTableID)
-      }
+    if (props.seats > props.guestIDs.length  &&
+        props.dragDropData.tableID !== props.id) {
+      props.reassignGuest(props.dragDropData.id, props.dragDropData.tableID, props.id)
     }
-    ev.target.classList.remove("drag")
+    ev.currentTarget.classList.remove("drag")
   }
-  const onDragOver = (ev) => {
+  const handleDragOver = (ev) => {
     ev.preventDefault();
   }
-  const onDragEnter = (ev) => {
-    if ( ev.currentTarget.className === "tableView" ) {
+  const handleDragEnter = ev => {
+    if ( ev.currentTarget.className === "tableView" &&
+         props.dragDropData.tableID !== props.id) {
       ev.currentTarget.classList.add("drag")
     }
   }
-  const onDragLeave = (ev) => {
+  const handleDragLeave = (ev) => {
     if (ev.relatedTarget.className === "tableContainer" ||
         ev.relatedTarget.className === "tables") {
       ev.currentTarget.classList.remove("drag")
@@ -34,9 +34,9 @@ const Table = props => {
   }
   return (
     <div className="tableView"
-         onDragOver={(e) => onDragOver(e)}
-         onDragEnter={(e) => onDragEnter(e)}
-         onDragLeave={(e) => onDragLeave(e)}
+         onDragOver={(e) => handleDragOver(e)}
+         onDragEnter={(e) => handleDragEnter(e)}
+         onDragLeave={(e) => handleDragLeave(e)}
          onDrop={(e) => handleDrop(e)}>
       <h2>{props.name}</h2>
       <TableGuestList guestIDs={props.guestIDs} />
@@ -46,6 +46,6 @@ const Table = props => {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Table)

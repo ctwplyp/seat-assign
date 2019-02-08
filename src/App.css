@@ -51,7 +51,7 @@ aside {
 }
 .drag {
   border: 0.5em dashed;
-  transform: scale(1.2);
+  transform: scale(1.1);
   background-color: darkgrey;
   transition: all 1s ease-in-out;
 }
