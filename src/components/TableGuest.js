@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { setDragData } from '../actions'
+
+const mapDispatchToProps = {setDragData}
 
 const TableGuest = props => (
   <div className="tableGuest_row"
-    onDragStart ={(e) => handleDragStart(e, props.tableID, props.id)}
+    onDragStart ={() => props.setDragData(props.id, props.tableID)}
     draggable >
     <span>{props.row}</span>
     <span>{props.name}</span>
@@ -14,14 +18,13 @@ const TableGuest = props => (
   </div>
 )
 
-const handleDragStart = (ev, oldTableID, id) => {
-  ev.dataTransfer.setData("id", id)
-  ev.dataTransfer.setData("oldTableID", oldTableID)
-}
-
 TableGuest.propTypes = {
   name: PropTypes.string.isRequired,
-  onGuestRemove: PropTypes.func.isRequired
+  onGuestRemove: PropTypes.func.isRequired,
+  setDragData: PropTypes.func.isRequired
 }
 
-export default TableGuest
+export default connect(
+  null,
+  mapDispatchToProps
+)(TableGuest)

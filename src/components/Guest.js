@@ -1,22 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { setDragData } from '../actions'
 
-const Guest = ({row, name, id, tableID}) => (
-  <tr onDragStart ={(e) => handleDragStart(e, tableID, id)}
+const mapDispatchToProps = {setDragData}
+
+const Guest = props => (
+  <tr onDragStart ={() => props.setDragData(props.id, props.tableID)}
       draggable >
-    <td>{row}</td>
-    <td>{name}</td>
-    <td>{tableID}</td>
+    <td>{props.row}</td>
+    <td>{props.name}</td>
+    <td>{props.tableID}</td>
   </tr>
 )
 
-const handleDragStart = (ev, oldTableID, id) => {
-  ev.dataTransfer.setData("id", id)
-  ev.dataTransfer.setData("oldTableID", oldTableID)
-}
-
 Guest.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  setDragData: PropTypes.func.isRequired
 }
 
-export default Guest
+export default connect(
+  null,
+  mapDispatchToProps
+)(Guest)

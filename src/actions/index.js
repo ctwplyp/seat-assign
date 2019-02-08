@@ -3,7 +3,7 @@ export const setDisplay = display => ({
   display
 })
 
-let tableID = 0
+let tableID = 1
 export const addTable = (name, seats=1) => ({
   type: 'ADD_TABLE',
   id: tableID++,
@@ -44,6 +44,12 @@ export const hideGuestForm = id => ({
 export const setVisibilityFilter = filter => ({
   type: 'SET_VISIBILITY_FILTER',
   filter
+})
+
+export const setDragData = (id, tableID) => ({
+  type: 'SET_DRAG_DATA',
+  id,
+  tableID
 })
 
 export const Displays = {
