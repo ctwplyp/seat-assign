@@ -29,8 +29,6 @@ aside {
 }
 .add_unassigned {
   background-color: #00AAFF;
-  position: fixed;
-  bottom: 0;
   padding: 0.5em;
   color: #000;
 }
@@ -45,13 +43,15 @@ aside {
   min-height: 300px;
   width: 300px;
   margin: 1em;
+  display: flex;
+  flex-direction: column;
   position: relative;
   transform: scale(1);
   transition: all 1s ease-in-out;
 }
 .drag {
   border: 0.5em dashed;
-  transform: scale(1.2);
+  transform: scale(1.1);
   background-color: darkgrey;
   transition: all 1s ease-in-out;
 }
@@ -64,9 +64,10 @@ aside {
 }
 .tableContainer h4 {
   color: #fff;
+  flex: 1 0 auto;
 }
 footer.tableFooter {
-  position: absolute;
+  flex-shrink: 0;
   box-sizing: border-box;
   width: 100%;
   bottom: 0;
@@ -74,9 +75,60 @@ footer.tableFooter {
   padding: 0.5em;
   border-radius: 0 0 1em 1em;
 }
-footer.tableFooter__Btn {
-  display: flex;
-  justify-content: space-between;
+.tableGuest_row {
+  margin: 1em;
+  text-align: left;
+  flex: 1 0 auto;
+}
+.tableGuest_row span {
+  margin: 0 1em;
+}
+.tableGuest_btn--remove{
+  color: red;
+}
+
+.circle__svg {
+  transform: rotate(-90deg);
+}
+.circle__progress {
+  fill: deepskyblue;
+  stroke-width: 5;
+  stroke-opacity: 0.3;
+  stroke-linecap: round;
+  stroke: steelblue;
+}
+.circle__progress--fill {
+  --initialStroke: 0;
+  --transitionDuration: 900;
+  stroke-opacity: 1;
+  stroke-dasharray: var(--initialStroke);
+  stroke-dashoffset: var(--initialStroke);
+  transition: stroke-dashoffset var(--transitionDuration) ease;
+}
+.occupancy {
+  position: absolute;
+  bottom: -3em;
+  left: -3em;
+}
+
+.occupancy_fraction {
+  width: 100%;
+  top: 45%;
+  left: 50%;
+  position: absolute;
+  font-weight: bold;
+  text-align: center;
+  line-height: 2em;
+  transform: translate(-50%, -50%);
+}
+.seats {
+  font-size: 3em;
+  color: #fff;
+  vertical-align: top;
+}
+.occupied {
+  font-size: 1.5em;
+  color: #fff;
 }
 /* Table Form: */
 #tableForm .newTableInputs {
